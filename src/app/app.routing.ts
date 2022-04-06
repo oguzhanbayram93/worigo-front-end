@@ -8,8 +8,21 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-
+import { UserLoginComponent } from './user-login/user-login.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AdminComponent } from './admin/admin.component';
+import { HotelListComponent } from './Admin/hotel-list/hotel-list.component';
 export const routes: Routes = [
+{
+  path: 'Admin', component: AdminComponent, children: [
+
+    {path:'HotelList',component:HotelListComponent},
+  ]
+},
+  
   {
     path: '',
     redirectTo: 'dashboard',
@@ -84,7 +97,10 @@ export const routes: Routes = [
       }
     ]
   },
-  { path: '**', component: P404Component }
+  {path:'ResetPassword',component:ResetPasswordComponent},  
+  {path:'ForgotPassword',component:ForgotPasswordComponent},
+  {path:'**', component:PageNotFoundComponent},
+
 ];
 
 @NgModule({

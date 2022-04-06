@@ -42,6 +42,13 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { UserLoginComponent } from './user-login/user-login.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AdminComponent } from './admin/admin.component';
+import { HotelListComponent } from './Admin/hotel-list/hotel-list.component';
 
 @NgModule({
   imports: [
@@ -66,7 +73,14 @@ import { ChartsModule } from 'ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UserLoginComponent,
+    AdminLoginComponent,
+    PageNotFoundComponent,
+    ResetPasswordComponent,
+    ForgotPasswordComponent,
+    AdminComponent,
+    HotelListComponent
   ],
   providers: [
     {

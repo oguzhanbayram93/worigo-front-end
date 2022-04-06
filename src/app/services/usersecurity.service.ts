@@ -6,4 +6,10 @@ import { Injectable } from '@angular/core';
 export class UsersecurityService {
 
   constructor() { }
+  loginControl() {
+    if(localStorage.getItem("mytoken") == null)
+    {
+      window.location.href="";
+    }
+  }
 }

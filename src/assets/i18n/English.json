@@ -7,6 +7,8 @@
     "numberOfStar":"Number Of Star",
     "roomNumber":"Room Number",
     "numberOfEmployees":"Number Of Employees",
-    "HOTELNAME":"Hotel Name"
+    "HOTELNAME":"Hotel Name",
+    "TELNUMBER":"Phone Number",
+    "PROFILEPHOTO":"Profile Image"
 
 }

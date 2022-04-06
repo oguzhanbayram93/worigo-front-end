@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-//import { TranslateService } from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Hotels } from 'src/app/models/Hotels';
 import { HotelsService } from 'src/app/services/hotels.service';
 
@@ -15,7 +15,7 @@ export class HotelListComponent implements OnInit {
   public hotels:any;
   public show = false;
   public deletedriver: string = '';
-  constructor(//public translate: TranslateService,
+  constructor(public translate: TranslateService,
     public hotelservice:HotelsService) { }
     async ngOnInit() {
       await this.hotelservice.getHotelsList().then(res => {this.hotels = res as unknown as Hotels[]});

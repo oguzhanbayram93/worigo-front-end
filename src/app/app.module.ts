@@ -6,7 +6,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
-
+import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateCacheModule, TranslateCacheSettings, TranslateCacheService } from 'ngx-translate-cache';
 import { IconModule, IconSetModule, IconSetService } from '@coreui/icons-angular';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -67,6 +69,21 @@ import { HotelListComponent } from './Admin/hotel-list/hotel-list.component';
     ChartsModule,
     IconModule,
     IconSetModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+    TranslateCacheModule.forRoot({
+      cacheService: {
+        provide: TranslateCacheService,
+        useFactory: translateCacheFactory,
+        deps: [TranslateService, TranslateCacheSettings]
+      },
+      cacheMechanism: 'Cookie'
+    }),
   ],
   declarations: [
     AppComponent,
@@ -92,4 +109,22 @@ import { HotelListComponent } from './Admin/hotel-list/hotel-list.component';
   ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule { 
+
+  constructor(translate: TranslateService, translateCacheService: TranslateCacheService) {
+    translateCacheService.init();
+    translate.addLangs(['English', 'Turkish']);
+    const browserLang:any =translateCacheService.getCachedLanguage() || translate.getBrowserLang();
+    translate.use(browserLang.match(/English|Turkish/) ? browserLang : 'English');
+    //  translate.setDefaultLang('English');
+  }
+}
+export function translateLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
+export function translateCacheFactory(
+  translateService: TranslateService,
+  translateCacheSettings: TranslateCacheSettings
+) {
+  return new TranslateCacheService(translateService, translateCacheSettings);
+}

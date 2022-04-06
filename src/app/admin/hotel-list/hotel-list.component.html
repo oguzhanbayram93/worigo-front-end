@@ -7,14 +7,14 @@
         <table class="table table-striped">
           <thead>
             <tr>
-              <th>Username</th>
-              <th>Date registered</th>
-              <th>Role</th>
-              <th>Status</th>
-              <th>Username</th>
-              <th>Date registered</th>
-              <th>Role</th>
-              <th>Status</th>
+              <th>{{'PROFILEPHOTO'|translate}}</th>
+              <th>{{'HOTELNAME'|translate}}</th>
+              <th>{{'EMAIL'|translate}}</th>
+              <th>{{'TELNUMBER'|translate}}</th>
+              <th>{{'ADDRESS'|translate}}</th>
+              <th>{{'numberOfStar'|translate}}</th>
+              <th>{{'roomNumber'|translate}}</th>
+              <th>{{'numberOfEmployees'|translate}}</th>
             </tr>
           </thead>
           <tbody>
@@ -52,7 +52,7 @@
                    
                     <form method="post" class='buttondelete'>
                        
-                        <button type="submit"  class="btn btn-danger buttondelete js-sweetalert"  [disabled]="this.clicked" data-toggle="modal" data-target="#exampleModal" ><i class="fa fa-trash-o"></i></button>
+                        <button type="submit"  class="btn btn-danger buttondelete js-sweetalert"  [disabled]="this.clicked" data-toggle="modal" data-target="#exampleModal" title="{{'DELETE'|translate}}"><i class="fa fa-trash-o"></i></button>
                     </form>
                 </td>
             </tr>

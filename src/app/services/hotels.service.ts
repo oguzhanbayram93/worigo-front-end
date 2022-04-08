@@ -20,7 +20,7 @@ export class HotelsService {
 
   }
 
-  async getHotelbyHotelId(id:number){
+  async getHotelbyHotelId(id:string){
     try {
        return await this.http.get<Hotels[]>(this.mylocalPaths.apiPath + "Hotel/GetById/id"+id.toString()).toPromise();
      } catch (err) {
@@ -29,11 +29,11 @@ export class HotelsService {
 
   }
 
-  async AddNewHotel(newhotel:Hotels){
+  async AddNewHotel(newhotel:Hotels,imageUrl:string){
     try {
       return this.http.post<Hotels>(this.mylocalPaths.apiPath + "Hotel/Add", {
         hotelName:newhotel.hotelName,
-        imageUrl:newhotel.imageUrl,
+        imageUrl:imageUrl,
         adress:newhotel.adress,
         phoneNumber:newhotel.phoneNumber,
         email:newhotel.email,
@@ -48,12 +48,31 @@ export class HotelsService {
 
   }
 
-  async UpdateHotel(updatehotel:Hotels){
+  async AddNewHotelwithoutPhoto(newhotel:Hotels){
+    try {
+      return this.http.post<Hotels>(this.mylocalPaths.apiPath + "Hotel/Add", {
+        hotelName:newhotel.hotelName,
+        imageUrl:'',
+        adress:newhotel.adress,
+        phoneNumber:newhotel.phoneNumber,
+        email:newhotel.email,
+        floorNumber:newhotel.floorNumber,
+        numberOfStar:newhotel.numberOfStar,
+        roomNumber:newhotel.roomNumber,
+        numberOfEmployees:newhotel.numberOfEmployees,
+      }).toPromise();
+     } catch (err) {
+       return window.location.href = 'serverError';
+     }
+
+  }
+
+  async UpdateHotel(updatehotel:Hotels,imageUrl:string){
     try {
       return this.http.post<Hotels>(this.mylocalPaths.apiPath + "Hotel/Update", {
         id: updatehotel.id,
         hotelName:updatehotel.hotelName,
-        imageUrl:updatehotel.imageUrl,
+        imageUrl:imageUrl,
         adress:updatehotel.adress,
         phoneNumber:updatehotel.phoneNumber,
         email:updatehotel.email,

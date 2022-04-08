@@ -24,7 +24,7 @@ import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
-
+import { FormsModule } from '@angular/forms';
 const APP_CONTAINERS = [
   DefaultLayoutComponent
 ];
@@ -51,6 +51,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminComponent } from './admin/admin.component';
 import { HotelListComponent } from './Admin/hotel-list/hotel-list.component';
+import { AddHotelComponent } from './admin/add-hotel/add-hotel.component';
+import { UpdateHotelComponent } from './admin/update-hotel/update-hotel.component';
 
 @NgModule({
   imports: [
@@ -58,6 +60,7 @@ import { HotelListComponent } from './Admin/hotel-list/hotel-list.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
     AppAsideModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
@@ -98,13 +101,15 @@ import { HotelListComponent } from './Admin/hotel-list/hotel-list.component';
     ResetPasswordComponent,
     ForgotPasswordComponent,
     AdminComponent,
-    HotelListComponent
+    HotelListComponent,
+    AddHotelComponent,
+    UpdateHotelComponent
   ],
   providers: [
-    {
-      provide: LocationStrategy,
-      useClass: HashLocationStrategy
-    },
+    // {
+    //   provide: LocationStrategy,
+    //   useClass: HashLocationStrategy
+    // },
     IconSetService,
   ],
   bootstrap: [ AppComponent ]
